@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export function CategoriesSection() {
   return (
-    <section className="bg-white py-20">
+    <section id="categorias" className="bg-white py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">

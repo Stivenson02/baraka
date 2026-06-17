@@ -1,11 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { brandAssets, navItems } from "@/lib/brand";
 import { Separator } from "@/components/ui/separator";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-black/5 bg-white">
+    <footer id="contacto" className="border-t border-black/5 bg-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
           <div>
@@ -26,9 +27,9 @@ export function SiteFooter() {
 
           <nav className="grid grid-cols-2 gap-3 text-sm text-brand-muted sm:grid-cols-3">
             {navItems.map((item) => (
-              <button key={item} className="text-left transition hover:text-brand-purple-dark">
-                {item}
-              </button>
+              <Link key={item.label} href={item.href} className="text-left transition hover:text-brand-purple-dark">
+                {item.label}
+              </Link>
             ))}
             <button className="text-left transition hover:text-brand-purple-dark">Términos</button>
           </nav>

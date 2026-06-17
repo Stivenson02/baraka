@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowRight, Search, ShieldCheck, ShoppingBag, Users } from "lucide-react";
 
@@ -7,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
-export function HeroSection() {
+export function HeroSection({ onOpenSellerDialog }: { onOpenSellerDialog?: () => void }) {
   return (
     <section className="overflow-hidden bg-white">
       <div className="mx-auto grid min-h-[720px] w-full max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-16">
@@ -47,6 +49,7 @@ export function HeroSection() {
               size="lg"
               variant="outline"
               className="border-brand-purple/20 text-brand-purple-dark hover:bg-brand-purple/5"
+              onClick={onOpenSellerDialog}
             >
               Ser aliada BARAKA
               <Users className="size-4" />

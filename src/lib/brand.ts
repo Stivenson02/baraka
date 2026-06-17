@@ -21,11 +21,11 @@ export const brandAssets = {
 };
 
 export const navItems = [
-  "Inicio",
-  "Categorías",
-  "Aliadas BARAKA",
-  "Para empresas",
-  "Contacto",
+  { label: "Inicio", href: "/" },
+  { label: "Categorias", href: "/#categorias" },
+  { label: "Aliadas BARAKA", href: "/#aliadas" },
+  { label: "Para empresas", href: "/empresas" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export const benefits = [

@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import { Building2, Goal, Handshake, TrendingUp, Users } from "lucide-react";
 
 import { brandAssets } from "@/lib/brand";
@@ -13,9 +16,9 @@ const allySteps = [
   { title: "Crecimiento con respaldo", description: "Una marca nacional seria detrás de cada oportunidad.", icon: TrendingUp },
 ];
 
-export function AlliesBusinessSection() {
+export function AlliesBusinessSection({ onOpenSellerDialog }: { onOpenSellerDialog?: () => void }) {
   return (
-    <section className="bg-brand-soft py-20">
+    <section id="aliadas" className="bg-brand-soft py-20">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div className="rounded-lg bg-white p-6 shadow-sm">
           <div className="flex items-center gap-4">
@@ -55,7 +58,11 @@ export function AlliesBusinessSection() {
             })}
           </div>
 
-          <Button type="button" className="mt-8 bg-brand-purple text-white hover:bg-brand-purple-hover">
+          <Button
+            type="button"
+            className="mt-8 bg-brand-purple text-white hover:bg-brand-purple-hover"
+            onClick={onOpenSellerDialog}
+          >
             <Handshake className="size-4" />
             Quiero vender con BARAKA
           </Button>
@@ -91,8 +98,10 @@ export function AlliesBusinessSection() {
               ))}
             </div>
 
-            <Button type="button" className="mt-8 bg-brand-orange text-white hover:bg-brand-orange/90">
-              Hablar con ventas B2B
+            <Button asChild className="mt-8 bg-brand-orange text-white hover:bg-brand-orange/90">
+              <Link href="/empresas">
+                Hablar con ventas B2B
+              </Link>
             </Button>
           </CardContent>
         </Card>
