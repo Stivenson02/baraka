@@ -31,6 +31,9 @@ yarn-error.log*
 .pnpm-debug.log*
 .next-dev-*.log
 
+# local planning artifacts
+/plans/
+
 # env files (can opt-in for committing if needed)
 .env*
 

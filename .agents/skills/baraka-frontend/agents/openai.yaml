@@ -1,0 +1,5 @@
+﻿interface:
+  display_name: "Baraka Frontend"
+  short_description: "Diseño frontend y UX de marca Baraka"
+  default_prompt: "Use $baraka-frontend to build Baraka UI with the project design system."
+

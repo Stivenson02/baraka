@@ -1,0 +1,5 @@
+﻿interface:
+  display_name: "Baraka Backend"
+  short_description: "Arquitectura backend e integraciones Baraka"
+  default_prompt: "Use $baraka-backend to implement Baraka server routes and Lukran integrations."
+
