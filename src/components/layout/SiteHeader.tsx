@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, ShoppingBag, Users } from "lucide-react";
+import { LogIn, Menu, ShoppingBag, Users } from "lucide-react";
 
 import { brandAssets, navItems } from "@/lib/brand";
 import { Button } from "@/components/ui/button";
@@ -51,6 +51,17 @@ export function SiteHeader({ onOpenSellerDialog }: { onOpenSellerDialog?: () => 
         </NavigationMenu>
 
         <div className="hidden items-center gap-2 lg:flex">
+          <Button
+            type="button"
+            variant="ghost"
+            className="text-brand-muted hover:text-brand-purple-dark"
+            asChild
+          >
+            <Link href="/login">
+              <LogIn className="size-4" />
+              Iniciar sesión
+            </Link>
+          </Button>
           <Button
             type="button"
             className="bg-brand-orange text-white shadow-sm hover:bg-brand-orange/90"
@@ -110,6 +121,12 @@ export function SiteHeader({ onOpenSellerDialog }: { onOpenSellerDialog?: () => 
                 onClick={onOpenSellerDialog}
               >
                 Quiero vender
+              </Button>
+              <Button type="button" variant="ghost" className="text-brand-muted" asChild>
+                <Link href="/login">
+                  <LogIn className="size-4" />
+                  Iniciar sesión
+                </Link>
               </Button>
             </div>
           </SheetContent>

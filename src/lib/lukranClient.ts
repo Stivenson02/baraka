@@ -16,12 +16,14 @@ export async function lukranFetch<T>({
   body,
   clientIp,
   timeoutMs = DEFAULT_TIMEOUT_MS,
+  extraHeaders,
 }: {
   endpoint: string;
   method?: "GET" | "POST" | "PUT" | "DELETE";
   body?: unknown;
   clientIp?: string | null;
   timeoutMs?: number;
+  extraHeaders?: Record<string, string>;
 }): Promise<T> {
   const timestamp = Math.floor(Date.now() / 1000).toString();
   const bodyString = body ? JSON.stringify(body) : "";
@@ -43,6 +45,7 @@ export async function lukranFetch<T>({
         "x-lukran-timestamp": timestamp,
         "x-lukran-signature": signature,
         ...(clientIp ? { "x-lukran-client-ip": clientIp } : {}),
+        ...(extraHeaders ?? {}),
       },
       body: method !== "GET" ? bodyString : undefined,
     });
