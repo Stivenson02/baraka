@@ -147,6 +147,11 @@ export function LoginVendedorForm({ reason, logout }: Props) {
           <p className="text-xs text-brand-muted/70 mb-5">
             Este acceso es para vendedores. Si quieres comprar, usa el acceso de clientes.
           </p>
+          <p className="text-xs text-brand-muted/80 mb-5 rounded-lg bg-brand-soft px-3 py-2">
+            Olvidaste tu contrasena de vendedor? Por ahora comunicate con el administrador de
+            BARAKA para recuperar tu acceso.
+            {/* TODO: Reemplazar este mensaje por el WhatsApp/contacto oficial del administrador. */}
+          </p>
 
           {infoMessage && (
             <div

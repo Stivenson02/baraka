@@ -11,7 +11,6 @@ export default function LoginSelectorPage() {
         background: "linear-gradient(135deg, #4B1677 0%, #6d28d9 55%, #7c3aed 100%)",
       }}
     >
-      {/* Logo blanco */}
       <Link href="/" className="mb-10 block">
         <div className="relative h-12 w-40">
           <Image
@@ -24,49 +23,51 @@ export default function LoginSelectorPage() {
         </div>
       </Link>
 
-      <h1 className="text-2xl font-semibold text-white mb-2 text-center">
-        ¿Cómo quieres ingresar?
+      <h1 className="mb-2 text-center text-2xl font-semibold text-white">
+        Como quieres ingresar?
       </h1>
-      <p className="text-white/60 text-sm mb-8 text-center">
-        Elige tu tipo de acceso a BARAKA
-      </p>
+      <p className="mb-8 text-center text-sm text-white/60">Elige tu tipo de acceso a BARAKA</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg">
-        {/* Soy cliente — deshabilitado */}
-        <div className="rounded-2xl bg-white/10 border border-white/15 p-6 flex flex-col items-center gap-3 backdrop-blur-sm">
-          <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center">
-            <ShoppingBag className="size-6 text-white/60" />
+      <div className="grid w-full max-w-lg grid-cols-1 gap-4 sm:grid-cols-2">
+        <Link
+          href="/login/cliente"
+          className="group flex flex-col items-center gap-3 rounded-lg bg-white p-6 shadow-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-xl"
+        >
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-soft">
+            <ShoppingBag className="size-6 text-brand-orange" />
           </div>
           <div className="text-center">
-            <h2 className="font-semibold text-white/80">Soy cliente</h2>
-            <p className="text-xs text-white/50 mt-1">Quiero comprar en BARAKA</p>
+            <h2 className="font-semibold text-brand-text">Soy cliente</h2>
+            <p className="mt-1 text-xs text-brand-muted">Comprar y recuperar mi cuenta</p>
           </div>
-          <span className="mt-1 text-xs bg-white/10 text-white/50 px-3 py-1 rounded-full">
-            Próximamente
+          <span className="mt-1 rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand-purple-dark transition-colors group-hover:bg-brand-purple-dark group-hover:text-white">
+            Entrar
           </span>
-        </div>
+        </Link>
 
-        {/* Soy vendedor */}
         <Link
           href="/login/vendedor"
-          className="rounded-2xl bg-white p-6 flex flex-col items-center gap-3 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 group"
+          className="group flex flex-col items-center gap-3 rounded-lg border border-white/15 bg-white/10 p-6 backdrop-blur-sm transition-all duration-200 hover:bg-white/15"
         >
-          <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center">
-            <Store className="size-6 text-brand-purple-dark" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+            <Store className="size-6 text-white/80" />
           </div>
           <div className="text-center">
-            <h2 className="font-semibold text-brand-purple-dark">Ya tengo credenciales</h2>
-            <p className="text-xs text-brand-muted mt-1">Ingresar como vendedor BARAKA</p>
+            <h2 className="font-semibold text-white">Soy vendedor</h2>
+            <p className="mt-1 text-xs text-white/60">Ya tengo credenciales BARAKA</p>
           </div>
-          <span className="mt-1 text-xs bg-accent text-brand-purple-dark px-3 py-1 rounded-full font-medium group-hover:bg-brand-purple-dark group-hover:text-white transition-colors">
-            Acceder →
+          <span className="mt-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70 transition-colors group-hover:bg-white group-hover:text-brand-purple-dark">
+            Acceder
           </span>
         </Link>
       </div>
 
-      <p className="mt-8 text-xs text-white/50 text-center">
-        ¿Quieres unirte como vendedor?{" "}
-        <Link href="/" className="text-white/80 hover:text-white underline underline-offset-2 font-medium transition-colors">
+      <p className="mt-8 text-center text-xs text-white/50">
+        Quieres unirte como vendedor?{" "}
+        <Link
+          href="/"
+          className="font-medium text-white/80 underline underline-offset-2 transition-colors hover:text-white"
+        >
           Solicita tu acceso
         </Link>
       </p>
