@@ -1,15 +1,19 @@
 import {
   BadgeCheck,
   Building2,
+  Gamepad2,
   Handshake,
   Home,
+  Laptop,
   PackageCheck,
+  Refrigerator,
   ShoppingBag,
   Sparkles,
   Store,
   Tag,
   Truck,
   Users,
+  WashingMachine,
 } from "lucide-react";
 
 export const brandAssets = {
@@ -21,11 +25,68 @@ export const brandAssets = {
 };
 
 export const navItems = [
-  { label: "Inicio", href: "/" },
-  { label: "Categorias", href: "/#categorias" },
-  { label: "Aliadas BARAKA", href: "/#aliadas" },
-  { label: "Para empresas", href: "/empresas" },
-  { label: "Contacto", href: "/#contacto" },
+  { label: "Nosotros", href: "/baraka" },
+  { label: "Empresas", href: "/empresas" },
+  { label: "Contactanos", href: "/#contacto" },
+];
+
+export const commerceCategories = [
+  { name: "Electrohogar", icon: Refrigerator },
+  { name: "Tecnologia", icon: Laptop },
+  { name: "Lavado", icon: WashingMachine },
+  { name: "Hogar", icon: Home },
+  { name: "Ofertas", icon: Tag },
+  { name: "Juegos y premios", icon: Gamepad2 },
+];
+
+export const ecommerceProducts = [
+  {
+    name: "Combo cocina inteligente",
+    category: "Hogar",
+    price: 489900,
+    beforePrice: 629900,
+    badge: "Mas vendido",
+    color: "bg-[#FDF2F8]",
+  },
+  {
+    name: "Freidora digital familiar",
+    category: "Cocina",
+    price: 319900,
+    beforePrice: 399900,
+    badge: "20% OFF",
+    color: "bg-[#FFF7ED]",
+  },
+  {
+    name: "Set organizador premium",
+    category: "Hogar",
+    price: 159900,
+    beforePrice: 219900,
+    badge: "Oferta BARAKA",
+    color: "bg-[#F5F0FF]",
+  },
+  {
+    name: "Licuadora alto rendimiento",
+    category: "Electro",
+    price: 249900,
+    beforePrice: 329900,
+    badge: "Nuevo",
+    color: "bg-[#ECFEFF]",
+  },
+];
+
+export const promoBanners = [
+  {
+    title: "Ofertas de lanzamiento",
+    description: "Precios especiales para activar las primeras compras del marketplace.",
+    cta: "Ver ofertas",
+    href: "/#ofertas",
+  },
+  {
+    title: "Vende con BARAKA",
+    description: "Abre tu solicitud y prepara tu catalogo para vender con respaldo.",
+    cta: "Quiero vender",
+    href: "#quiero-vender",
+  },
 ];
 
 export const benefits = [

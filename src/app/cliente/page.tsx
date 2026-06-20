@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { CalendarDays, ShoppingBag, UserRound } from "lucide-react";
-import { ClienteLogoutButton } from "@/components/customer/ClienteLogoutButton";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Button } from "@/components/ui/button";
-import { brandAssets } from "@/lib/brand";
 import { getCustomerMe } from "@/services/customer-auth.service";
 
 function formatDate(value: string | null) {
@@ -39,17 +38,17 @@ export default async function ClientePage() {
   }
 
   return (
-    <main className="min-h-screen bg-brand-soft">
-      <header className="border-b border-black/5 bg-white">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-          <Link href="/" className="relative block h-10 w-32">
-            <Image src={brandAssets.logo} alt="BARAKA" fill className="object-contain object-left" />
-          </Link>
-          <ClienteLogoutButton />
-        </div>
-      </header>
-
-      <section className="mx-auto max-w-5xl px-4 py-10">
+    <>
+      <SiteHeader
+        variant="store"
+        session={{
+          type: "customer",
+          name: contact.name,
+          email: customer.email,
+        }}
+      />
+      <main className="min-h-screen bg-brand-soft">
+        <section className="mx-auto max-w-5xl px-4 py-10">
         <div className="mb-8">
           <p className="mb-2 text-sm font-medium text-brand-purple-dark">{business.name}</p>
           <h1 className="text-3xl font-bold text-brand-text">Hola, {contact.name}</h1>
@@ -90,6 +89,8 @@ export default async function ClientePage() {
           </Button>
         </div>
       </section>
-    </main>
+      </main>
+      <SiteFooter />
+    </>
   );
 }
