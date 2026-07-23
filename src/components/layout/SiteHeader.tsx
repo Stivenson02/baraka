@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import type { LucideIcon } from "lucide-react";
 import {
   Heart,
   LogIn,
@@ -30,6 +31,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
+import type { StorefrontCategory } from "@/types/category.type";
 
 type HeaderSession =
   | { type: "customer"; name?: string; email?: string }
@@ -40,15 +42,18 @@ export function SiteHeader({
   onOpenSellerDialog,
   session = null,
   variant = "landing",
+  categories = [],
 }: {
   onOpenSellerDialog?: () => void;
   session?: HeaderSession;
   variant?: "landing" | "store";
+  categories?: StorefrontCategory[];
 }) {
   const isStore = variant === "store";
   const displayName = session?.name?.split(" ")[0] || session?.email?.split("@")[0];
   const accountHref = session?.type === "seller" ? "/vendedor" : "/cliente";
   const router = useRouter();
+  const storeCategories = getHeaderCategories(categories);
 
   async function handleCustomerLogout() {
     await fetch("/api/auth/customer/logout", { method: "POST" });
@@ -218,11 +223,11 @@ export function SiteHeader({
             </nav>
 
             {isStore && (
-              <div className="grid grid-cols-2 gap-2">
-                {commerceCategories.slice(0, 4).map((category) => (
+              <div className="grid max-h-44 grid-cols-2 gap-2 overflow-y-auto pr-1">
+                {storeCategories.map((category) => (
                   <Link
-                    key={category.name}
-                    href="/#categorias"
+                    key={category.id}
+                    href={category.href}
                     className="rounded-lg bg-brand-soft px-3 py-2 text-xs font-medium text-brand-text"
                   >
                     {category.name}
@@ -280,12 +285,12 @@ export function SiteHeader({
       {isStore && (
         <div className="hidden border-t border-black/5 bg-white lg:block">
           <nav className="mx-auto flex h-10 max-w-7xl items-center gap-2 overflow-x-auto px-4 sm:px-6 lg:px-8">
-            {commerceCategories.map((category) => {
+            {storeCategories.map((category) => {
               const Icon = category.icon;
               return (
                 <Link
-                  key={category.name}
-                  href="/#categorias"
+                  key={category.id}
+                  href={category.href}
                   className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md px-3 text-xs font-medium text-brand-muted transition hover:bg-brand-soft hover:text-brand-purple-dark"
                 >
                   <Icon className="size-3.5" />
@@ -298,4 +303,22 @@ export function SiteHeader({
       )}
     </header>
   );
+}
+
+function getHeaderCategories(categories: StorefrontCategory[]) {
+  if (categories.length) {
+    return categories.map((category, index) => ({
+      id: category.id,
+      name: category.name,
+      href: "/#productos",
+      icon: commerceCategories[index % commerceCategories.length].icon,
+    }));
+  }
+
+  return commerceCategories.map((category, index) => ({
+    id: `fallback-${index}-${category.name}`,
+    name: category.name,
+    href: "/#productos",
+    icon: category.icon as LucideIcon,
+  }));
 }

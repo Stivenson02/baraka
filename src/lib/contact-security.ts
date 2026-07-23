@@ -67,6 +67,16 @@ export function isAllowedContactOrigin(headers: Headers) {
   }
 }
 
+export function isAllowedContactOriginIfPresent(headers: Headers) {
+  const origin = getSafeRequestOrigin(headers);
+
+  if (!origin) {
+    return true;
+  }
+
+  return isAllowedContactOrigin(headers);
+}
+
 export function isLikelyBotSubmission(body: {
   website?: string | null;
   formStartedAt?: string | null;
@@ -153,3 +163,6 @@ export function verifySellerIntentToken(token: string, path: string) {
     payload.exp >= now
   );
 }
+
+export const issuePublicFormIntentToken = issueSellerIntentToken;
+export const verifyPublicFormIntentToken = verifySellerIntentToken;

@@ -5,7 +5,9 @@ import { CalendarDays, ShoppingBag, UserRound } from "lucide-react";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Button } from "@/components/ui/button";
+import { getHomeCategories } from "@/services/categories.service";
 import { getCustomerMe } from "@/services/customer-auth.service";
+import type { StorefrontCategory } from "@/types/category.type";
 
 function formatDate(value: string | null) {
   if (!value) return "Primer ingreso";
@@ -32,9 +34,24 @@ export default async function ClientePage() {
   }
 
   const { customer, contact, business } = session.data;
+  let categories: StorefrontCategory[] = [];
 
   if (customer.requiresPasswordChange) {
     redirect("/login/cliente/cambiar-contrasena");
+  }
+
+  try {
+    const { data } = await getHomeCategories(6);
+    categories = data.map((category) => ({
+      id: category.id,
+      name: category.name,
+      slug: category.slug,
+      description: category.description,
+      imageUrl: category.image?.file.url ?? null,
+      order: category.order,
+    }));
+  } catch {
+    // The customer area should still render if category navigation is unavailable.
   }
 
   return (
@@ -46,6 +63,7 @@ export default async function ClientePage() {
           name: contact.name,
           email: customer.email,
         }}
+        categories={categories}
       />
       <main className="min-h-screen bg-brand-soft">
         <section className="mx-auto max-w-5xl px-4 py-10">
